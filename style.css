@@ -157,4 +157,16 @@ body.dark .produto{
         width:100%;
     }
 
+body.dark input{
+    background:#1f2b4a;
+    color:white;
+    border:1px solid #3f5a9a;
+}
+
+body.dark input::placeholder{
+    color:#d8d8d8;
+}
+
+body.dark label{
+    color:white;
 }
