@@ -1,92 +1,91 @@
 const formulario = document.getElementById("produtoForm");
 const listaProdutos = document.getElementById("listaProdutos");
+const temaBtn = document.getElementById("temaBtn");
 
 let produtos = [];
 
+// Alternar tema
+
+temaBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+        temaBtn.textContent = "☀️";
+    }else{
+        temaBtn.textContent = "🌙";
+    }
+
+});
+
 // Adicionar produto
-formulario.addEventListener("submit", (event) => {
-    event.preventDefault();
 
-    const nomeInput = document.getElementById("nome");
-    const precoInput = document.getElementById("preco");
+formulario.addEventListener("submit", (evento) => {
 
-    const nome = nomeInput.value.trim();
-    const preco = Number(precoInput.value);
+    evento.preventDefault();
 
-    // Validação
-    if (!nome) {
-        alert("Digite o nome do produto.");
+    const nome = document.getElementById("nome").value.trim();
+    const preco = parseFloat(document.getElementById("preco").value);
+    const quantidade = parseInt(document.getElementById("quantidade").value);
+
+    if(nome === "" || preco <= 0 || quantidade <= 0){
+        alert("Preencha todos os campos corretamente.");
         return;
     }
 
-    if (isNaN(preco) || preco <= 0) {
-        alert("Digite um preço válido.");
-        return;
-    }
-
-    produtos.push({
-        id: Date.now(),
+    const produto = {
         nome,
-        preco
-    });
+        preco,
+        quantidade
+    };
+
+    produtos.push(produto);
 
     atualizarLista();
 
     formulario.reset();
 });
 
-// Remover produto
-function removerProduto(id) {
-    produtos = produtos.filter(produto => produto.id !== id);
-    atualizarLista();
-}
+// Atualizar lista
 
-// Atualizar lista na tela
-function atualizarLista() {
+function atualizarLista(){
 
     listaProdutos.innerHTML = "";
 
-    if (produtos.length === 0) {
-        listaProdutos.innerHTML = `
-            <li class="produto-vazio">
-                Nenhum produto cadastrado.
-            </li>
-        `;
-        return;
-    }
+    for(let i = 0; i < produtos.length; i++){
 
-    produtos.forEach(produto => {
+        const produto = produtos[i];
 
         const item = document.createElement("li");
-        item.classList.add("produto-item");
-
-        const valorFormatado = produto.preco.toLocaleString(
-            "pt-BR",
-            {
-                style: "currency",
-                currency: "BRL"
-            }
-        );
+        item.classList.add("produto");
 
         item.innerHTML = `
-            <div>
-                <strong>${produto.nome}</strong><br>
-                ${valorFormatado}
+            <div class="info-produto">
+                <strong>${produto.nome}</strong>
+                <span>Preço: R$ ${produto.preco.toFixed(2)}</span>
+                <span>Quantidade: ${produto.quantidade}</span>
+                <span>Total: R$ ${(produto.preco * produto.quantidade).toFixed(2)}</span>
             </div>
-            <button class="remover">
+
+            <button class="remover" onclick="removerProduto(${i})">
                 Remover
             </button>
         `;
 
-        item
-            .querySelector(".remover")
-            .addEventListener("click", () => {
-                removerProduto(produto.id);
-            });
-
         listaProdutos.appendChild(item);
-    });
+    }
+
 }
 
-// Exibir mensagem inicial
-atualizarLista();
+// Remover produto
+
+function removerProduto(indice){
+
+    if(indice >= 0 && indice < produtos.length){
+
+        produtos.splice(indice, 1);
+
+        atualizarLista();
+    }
+
+}
