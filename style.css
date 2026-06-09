@@ -1,102 +1,160 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f9;
-    padding: 20px;
 }
 
-.container {
-    max-width: 700px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+body{
+    background-color:#FFF7E6;
+    color:#222;
+    transition:0.3s;
+    min-height:100vh;
+    padding:20px;
 }
 
-h1, h2 {
-    text-align: center;
-    margin-bottom: 20px;
+body.dark{
+    background-color:#0A122A;
+    color:#FFFFFF;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.container{
+    max-width:700px;
+    margin:50px auto;
 }
 
-.campo {
-    display: flex;
-    flex-direction: column;
+h1,h2{
+    text-align:center;
+    margin-bottom:20px;
 }
 
-label {
-    margin-bottom: 5px;
-    font-weight: bold;
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+    padding:20px;
+    border-radius:10px;
+
+    background:white;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+body.dark form{
+    background:#16213E;
 }
 
-button {
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
+.campo{
+    display:flex;
+    flex-direction:column;
 }
 
-button:hover {
-    background-color: #0056b3;
+label{
+    margin-bottom:5px;
+    font-weight:bold;
 }
 
-.lista-container {
-    margin-top: 30px;
+input{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
 }
 
-#listaProdutos {
-    list-style: none;
+.btn-adicionar{
+    background:#0A122A;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
 }
 
-.produto-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #eef2f7;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+.btn-adicionar:hover{
+    opacity:0.9;
 }
 
-.remover {
-    background-color: #dc3545;
-    padding: 8px 12px;
+body.dark .btn-adicionar{
+    background:#FFF7E6;
+    color:#0A122A;
 }
 
-.remover:hover {
-    background-color: #b02a37;
+#temaBtn{
+    position:fixed;
+    top:15px;
+    left:15px;
+
+    width:50px;
+    height:50px;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+    font-size:20px;
+
+    background:#0A122A;
+    color:white;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-    .produto-item {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
+body.dark #temaBtn{
+    background:#FFF7E6;
+    color:#0A122A;
+}
+
+#listaProdutos{
+    list-style:none;
+    margin-top:20px;
+}
+
+.produto{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px;
+    margin-bottom:10px;
+
+    border-radius:8px;
+
+    background:white;
+    box-shadow:0 0 5px rgba(0,0,0,0.1);
+}
+
+body.dark .produto{
+    background:#16213E;
+}
+
+.info-produto{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.remover{
+    background:#d62828;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.remover:hover{
+    background:#b51717;
+}
+
+@media(max-width:600px){
+
+    .produto{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
     }
 
-    button {
-        width: 100%;
+    .remover{
+        width:100%;
     }
+
 }
