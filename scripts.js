@@ -4,88 +4,126 @@ const temaBtn = document.getElementById("temaBtn");
 
 let produtos = [];
 
-// Alternar tema
+// ======================
+// TEMA CLARO / ESCURO
+// ======================
 
-temaBtn.addEventListener("click", () => {
+temaBtn.addEventListener("click", function () {
 
     document.body.classList.toggle("dark");
 
-    if(document.body.classList.contains("dark")){
+    if (document.body.classList.contains("dark")) {
         temaBtn.textContent = "☀️";
-    }else{
+    } else {
         temaBtn.textContent = "🌙";
     }
 
 });
 
-// Adicionar produto
+// ======================
+// ADICIONAR PRODUTO
+// ======================
 
-formulario.addEventListener("submit", (evento) => {
+formulario.addEventListener("submit", function (e) {
 
-    evento.preventDefault();
+    e.preventDefault();
 
     const nome = document.getElementById("nome").value.trim();
-    const preco = parseFloat(document.getElementById("preco").value);
-    const quantidade = parseInt(document.getElementById("quantidade").value);
 
-    if(nome === "" || preco <= 0 || quantidade <= 0){
-        alert("Preencha todos os campos corretamente.");
+    const preco = Number(
+        document.getElementById("preco").value
+    );
+
+    const quantidade = parseInt(
+        document.getElementById("quantidade").value
+    );
+
+    if (
+        nome === "" ||
+        isNaN(preco) ||
+        preco <= 0 ||
+        isNaN(quantidade) ||
+        quantidade <= 0
+    ) {
+        alert("Preencha os campos corretamente.");
         return;
     }
 
-    const produto = {
-        nome,
-        preco,
-        quantidade
-    };
-
-    produtos.push(produto);
+    produtos.push({
+        nome: nome,
+        preco: preco,
+        quantidade: quantidade
+    });
 
     atualizarLista();
 
     formulario.reset();
 });
 
-// Atualizar lista
+// ======================
+// LISTAR PRODUTOS
+// ======================
 
-function atualizarLista(){
+function atualizarLista() {
 
     listaProdutos.innerHTML = "";
 
-    for(let i = 0; i < produtos.length; i++){
+    for (let i = 0; i < produtos.length; i++) {
 
         const produto = produtos[i];
 
-        const item = document.createElement("li");
-        item.classList.add("produto");
+        const li = document.createElement("li");
 
-        item.innerHTML = `
+        li.className = "produto";
+
+        li.innerHTML = `
             <div class="info-produto">
                 <strong>${produto.nome}</strong>
-                <span>Preço: R$ ${produto.preco.toFixed(2)}</span>
-                <span>Quantidade: ${produto.quantidade}</span>
-                <span>Total: R$ ${(produto.preco * produto.quantidade).toFixed(2)}</span>
+
+                <span>
+                    Preço: R$ ${produto.preco.toFixed(2)}
+                </span>
+
+                <span>
+                    Quantidade: ${produto.quantidade}
+                </span>
+
+                <span>
+                    Total: R$ ${(produto.preco * produto.quantidade).toFixed(2)}
+                </span>
             </div>
 
-            <button class="remover" onclick="removerProduto(${i})">
+            <button
+                class="remover"
+                data-indice="${i}">
                 Remover
             </button>
         `;
 
-        listaProdutos.appendChild(item);
+        listaProdutos.appendChild(li);
     }
 
+    adicionarEventosRemover();
 }
 
-// Remover produto
+// ======================
+// REMOVER PRODUTO
+// ======================
 
-function removerProduto(indice){
+function adicionarEventosRemover() {
 
-    if(indice >= 0 && indice < produtos.length){
+    const botoes = document.querySelectorAll(".remover");
 
-        produtos.splice(indice, 1);
+    for (let i = 0; i < botoes.length; i++) {
 
-        atualizarLista();
+        botoes[i].addEventListener("click", function () {
+
+            const indice = this.dataset.indice;
+
+            produtos.splice(indice, 1);
+
+            atualizarLista();
+
+        });
     }
-
 }
