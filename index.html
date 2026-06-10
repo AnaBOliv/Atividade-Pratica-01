@@ -1,14 +1,31 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Produtos</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
 <body>
 
+    <!-- Marca d'água -->
     <div class="assinatura">
         Desenvolvido por Ana B.
     </div>
 
+    <!-- Botão tema -->
     <button id="temaBtn" aria-label="Alternar tema">
         🌙
     </button>
 
+    <!-- Conteúdo principal -->
     <main class="pagina">
 
         <div class="container">
@@ -18,34 +35,52 @@
             <form id="produtoForm">
 
                 <div class="campo">
-                    <label for="nome">Nome do Produto</label>
+
+                    <label for="nome">
+                        Nome do Produto
+                    </label>
+
                     <input
                         type="text"
                         id="nome"
+                        placeholder="Digite o nome do produto"
                         required
                     >
+
                 </div>
 
                 <div class="campo">
-                    <label for="preco">Preço</label>
+
+                    <label for="preco">
+                        Preço (R$)
+                    </label>
+
                     <input
                         type="number"
                         id="preco"
                         min="0"
                         step="0.01"
+                        placeholder="0,00"
                         required
                     >
+
                 </div>
 
                 <div class="campo">
-                    <label for="quantidade">Quantidade</label>
+
+                    <label for="quantidade">
+                        Quantidade
+                    </label>
+
                     <input
                         type="number"
                         id="quantidade"
                         min="1"
                         step="1"
+                        placeholder="1"
                         required
                     >
+
                 </div>
 
                 <button
@@ -65,12 +100,19 @@
 
     </main>
 
+    <!-- Rodapé -->
     <footer>
+
         Criado para fins de prática •
-        anaboliveira2319@gmail.com
+
+        <a href="mailto:anaboliveira2319@gmail.com">
+            anaboliveira2319@gmail.com
+        </a>
+
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
