@@ -1,60 +1,45 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Produtos</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
- <div class="pagina">
-    <button id="temaBtn">🌙</button>
 
-    <div class="container">
-
-        <h1>Cadastro de Produtos</h1>
-
-        <form id="produtoForm">
-
-            <div class="campo">
-                <label>Nome do Produto</label>
-                <input type="text" id="nome" required>
-            </div>
-
-            <div class="campo">
-                <label>Preço</label>
-                <input type="number" id="preco" min="0" step="0.01" required>
-            </div>
-
-            <div class="campo">
-                <label>Quantidade</label>
-              <input
-    type="number"
-    id="quantidade"
-    min="1"
-    step="1"
-    required
->
-            </div>
-
-            <button type="submit" class="btn-adicionar">
-                Adicionar Produto
-            </button>
-
-        </form>
-
-        <h2>Lista de Produtos</h2>
-
-        <ul id="listaProdutos"></ul>
-
- <div class="assinatura">
+    <div class="assinatura">
         Desenvolvido por Ana B.
     </div>
 
+    <button id="temaBtn">🌙</button>
+
     <div class="pagina">
 
-        <!-- Todo o conteúdo do projeto -->
+        <div class="container">
+
+            <h1>Cadastro de Produtos</h1>
+
+            <form id="produtoForm">
+
+                <div class="campo">
+                    <label>Nome do Produto</label>
+                    <input type="text" id="nome" required>
+                </div>
+
+                <div class="campo">
+                    <label>Preço</label>
+                    <input type="number" id="preco" min="0" step="0.01" required>
+                </div>
+
+                <div class="campo">
+                    <label>Quantidade</label>
+                    <input type="number" id="quantidade" min="1" step="1" required>
+                </div>
+
+                <button type="submit" class="btn-adicionar">
+                    Adicionar Produto
+                </button>
+
+            </form>
+
+            <h2>Lista de Produtos</h2>
+
+            <ul id="listaProdutos"></ul>
+
+        </div>
 
     </div>
 
@@ -62,7 +47,7 @@
         Criado para fins de prática •
         anaboliveira2319@gmail.com
     </footer>
-<script src="script.js" defer></script>
+
+    <script src="script.js" defer></script>
 
 </body>
-</html>
