@@ -6,11 +6,18 @@
 }
 
 body{
+
     background-color:#FFF7E6;
+
     color:#222;
+
     transition:0.3s;
+
     min-height:100vh;
-    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
 }
 
 body.dark{
@@ -19,7 +26,11 @@ body.dark{
 }
 
 .container{
+
+    width:100%;
+
     max-width:700px;
+
     margin:50px auto;
 }
 
@@ -109,17 +120,16 @@ body.dark #temaBtn{
 }
 
 .produto{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
-    padding:15px;
-    margin-bottom:10px;
+    gap:15px;
 
-    border-radius:8px;
-
-    background:white;
-    box-shadow:0 0 5px rgba(0,0,0,0.1);
+    flex-wrap:wrap;
 }
 
 body.dark .produto{
@@ -156,6 +166,7 @@ body.dark .produto{
     .remover{
         width:100%;
     }
+}
 
 body.dark input{
     background:#1f2b4a;
@@ -169,6 +180,18 @@ body.dark input::placeholder{
 
 body.dark label{
     color:white;
+}
+input{
+
+    width:100%;
+
+    padding:10px;
+
+    border:1px solid #ccc;
+
+    border-radius:5px;
+
+    font-size:16px;
 }
 .assinatura{
 
@@ -207,13 +230,28 @@ footer{
 
     flex:1;
 
-    display:flex;
+    width:100%;
 
-    flex-direction:column;
+    display:flex;
 
     justify-content:center;
 
-    align-items:center;
+    align-items:flex-start;
 
     padding:20px;
+}
+@media(max-width:768px){
+
+    .container{
+
+        width:100%;
+
+        margin:20px auto;
+    }
+
+    form{
+
+        padding:15px;
+    }
+
 }
